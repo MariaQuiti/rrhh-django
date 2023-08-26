@@ -1,43 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="p-3 mb-2 bg-dark text-white">
     <div class="container p-4">
-        <h1 class="text-center display-1">Listar Personas</h1>
+        <h1 class="text-center display-1 fw-bold mt-4">Personas</h1>
     </div>
     <div class="container">
-        <form method="get">
-            <table class="table table-hover">
-                <thead  class="bg-body-secondary">
-                    <tr>
-                        <th></th>
-                        <th>
-                            Filtrar nombre:
+        <form method="get" class="">
+            <table class="table table-hover table-responsive table-dark">
+                <thead class="bg-body-secondary">
+                    <div class="m-5">
+                        <tr>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Buscar por nombre</label>
+                                <input type="text" name="firstname" class="form-control"
+                                    placeholder="Escriba nombre para filtrar">
+                            </div>
+        
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Buscar por rango de fecha</label>
                                 <div class="input-group">
-                                    <input type="text" name="firstname" class="form-control">
+                                    <input type="text" name="startdate" class="form-control" placeholder="Fecha inicio">
+                                    <input type="text" name="enddate" class="form-control" placeholder="Fecha fin">
                                 </div>
-                            </th>
-                            <th >
-                            Filtrar entre:
-                                <div class="input-group">
-                                    <input type="text" name="startdate" class="form-control">
-                                    <input type="text" name="enddate" class="form-control">
-                                </div>
-                            <th>
-                                <button type="submit" class="btn btn-outline-primary">Filtrar</button>
-                            </th>
-                    </tr>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Primer Nombre</th>
-                        <th scope="col">Segundo Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
-                        
-                    </th>
-                    </tr>
+                            </div>
+        
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-light mt-4">Buscar</button>
+                            </div>
+        
+                        </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Primer Nombre</th>
+                            <th scope="col">Segundo Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
+        
+                        </tr>
+                    </div>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     {% for per in personas %}
                     <tr>
                         <td>{{ per.businessentityid }}</td>
@@ -46,16 +50,18 @@
                         <td>{{ per.lastname }}</td>
                         <td>{{ per.modifieddate }}</td>
                         <td>
-                            <a href="/update/{{ per.id }} class=" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" >Editar</a>
+                            <a href="/update/{{ per.id }} class="
+                                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Editar</a>
                         </td>
                         <td>
-                            <a href="/delete/{{ per.id }}" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Eliminar</a>
+                            <a href="/delete/{{ per.id }}"
+                                class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Eliminar</a>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </form>
-        
     </div>
+</div>
 {% endblock %}
